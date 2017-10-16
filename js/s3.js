@@ -201,14 +201,23 @@ $(document).ready(function(){
     }
 
     $('#tb-s3objects').DataTable({
-        iDisplayLength: 50,
+        iDisplayLength: 10,
         order: [[1, 'asc'], [0, 'asc']],
         aoColumnDefs: [
             { "aTargets": [ 0 ], "mData": "Key", "mRender": function (data, type, full) { return (type == 'display') ? renderKey(data, type, full) : data; }, "sType": "key" },
             { "aTargets": [ 1 ], "mData": "Key", "mRender": function (data, type, full) { return isfolder(data) ? "" : fullpath2pathname(data); } },
             { "aTargets": [ 2 ], "mData": "LastModified", "mRender": function (data, type, full) { return data ? moment(data).format('YYYY-MM-DD') : ""; } },
             { "aTargets": [ 3 ], "mData": function (source, type, val) { return source.Size ? ((type == 'display') ? bytesToSize(source.Size) : source.Size) : "" } },
-        ]
+        ], 
+        "deferRender":    true,
+        "scrollY":         "300px",
+        "scrollX":         true,
+        "scroller":       true,
+        // "stateSave":       true, 
+        "scrollCollapse": true,
+        // "paging":         true,
+        // "responsive": true, 
+        "displayLength": 100,
     });
 
     $('#tb-s3objects').DataTable().column(s3exp_columns.key).visible(false);
