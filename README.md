@@ -4,4 +4,4 @@ Amazon S3 was configured for hosting PredictDB Data Repository that allows users
 
 ## How to update this webapp?
 
-Just scp all updated files to predictdb.org s3 bucket.
+Just copy web files to predictdb.org s3 bucket, and upload data files to predictdb2 s3 bucket. 
