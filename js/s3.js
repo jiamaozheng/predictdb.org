@@ -1,3 +1,6 @@
+// https://github.com/awslabs/aws-js-s3-explorer
+
+
 var trackOutboundLink = function(url) {
        ga('send', 'event', 'outbound', 'click', url, {
          'transport': 'beacon',
@@ -5,7 +8,7 @@ var trackOutboundLink = function(url) {
        });
 }
 
-var s3exp_config = {Bucket: 'predictdb', Prefix: '', Delimiter: '/' };
+var s3exp_config = {Bucket: 'predictdb2', Prefix: '', Delimiter: '/' };
 
 var s3exp_lister = null;
 var s3exp_columns = { key:1, folder:2, date:3, size:4 };

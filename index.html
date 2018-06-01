@@ -39,7 +39,6 @@
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li><a href="http://predictdb.org"><strong>Home</strong></a></li>
-                <li><a href="https://cloud.hakyimlab.org"><strong>Cloud</strong></a></li>
                 <li><a href="./News.html"><strong>News</strong></a></li>
                 <li><a href="./FAQ.html"><strong>FAQ</strong></a></li>
                 <li><a href="./Contact.html"><strong>Contact Us</strong></a></li>
@@ -60,25 +59,29 @@
                     Welcome to PredictDB! The files hosted here can be used with the Im Lab's software <a href="https://github.com/hakyimlab/PrediXcan" target="_blank"> PrediXcan </a> and <a href="https://github.com/hakyimlab/MetaXcan" target="_blank"> MetaXcan</a>. Navigate below to download one or more tissue models.
                 </p>
                 <p>
-                    <b>Not sure where to start?</b> If you are new to PrediXcan and MetaXcan, we recommend starting your analyses with the DGN-HapMap Whole Blood model or one of the various GTEx-HapMap tissue models.  See our <a href="./FAQ.html">FAQ</a> and the description below for more info. 
+                    <b>Not sure where to start?</b> If you are new to PrediXcan and MetaXcan, we recommend starting your analyses with the DGN-HapMap Whole Blood model or one of the various GTEx-HapMap tissue models.  See our <a href="./FAQ.html">FAQ</a> and README file for more info. 
                 </p>
                 <h2> <b> Announcement </b> </h2>
-                <h4><strong>November 30, 2016</strong></h4>
+                <h4><strong>January 08, 2018</strong></h4>
                 <p> 
-                    We have received a number of inquiries from users about how to build their
-                    own prediction models.  All scripts to train the models are located in the
-                    GitHub repository <a href="https://github.com/hakyimlab/PredictDBPipeline" target="_blank"> here </a>.  Note
-                    that many of these scripts have to do with splitting up data and submitting
-                    jobs to the University of Chicago's HPC cluster.  The script for model training
-                    is located at <a href="https://github.com/hakyimlab/PredictDBPipeline/blob/master/scripts/GTEx_Tissue_Wide_CV_elasticNet.R" target="_blank"> here </a>.
-                    We hope this proves useful and gives some insight into how the models were built. If you do build a prediction model for your own research, we encourage you to share it with the community following the publication of your main results, or sooner, if you feel comfortable.  We can then host your model on predictdb.org while giving you proper acknowledgement.
+                     We are releasing prediction models trained on GTEx Version 7 data. We have updated our processing pipeline, and restricted to individuals of European ancestry to obtain more reliable LD data. This reduces false positive associations in the Summary Version of PrediXcan. Because of this choice, the gain in sample size relative to V6p is modest (ranging from -18 to 89), with whole blood, LCLs and fibroblasts experiencing reduced sample size. We developed a new criteria to assess model performance. We have also decided to include prediction models for both pseudogenes and lincRNAs. For your convenience, we also include a SNP annotation file with information on the SNPs used to train the models.
                 </p>
-                <h5>
-                  <font color="black">
-                  <hr />
-                  <b>Disclaimer</b>: the models are provided "as is", with the hope that they may be of use, without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose and noninfringement. in no event shall the authors or copyright holders be liable for any claim, damages or other liability, whether in an action of contract, tort or otherwise, arising from, out of or in connection with the models or the use or other dealings in the models.  
-                  </font>
-                </h5></font>
+
+                <p> 
+                      While preparing GTEx V7 prediction models, we identified a few issues in the way prediction performance was estimated in the previous release (2016-09-08 release). In aggregate, these caused the prediction model performance to be overestimated. Reassuringly, predicted expression levels and the downstream associations with phenotypes remain mostly unchanged, even though prediction weights vary slightly. However, some gene/tissue pairs are no longer considered reliable. See the flag file <a href="https://s3.amazonaws.com/predictdb2/deprecated/flags.txt" target="_blank"> here </a>.
+                 </p> 
+
+                 <p> 
+                    Detailed description of the pipeline update and the effect in prediction models performance and downstream S-PrediXcan association can be found <a href="http://hakyimlab.org/post/2017/v7-v6p-analysis/" target="_blank"> here </a>.
+                 </p>
+
+                 <p> We would appreciate comments to our mailing list predixcanmetaxcan@googlegroups.com </p>
+                 <h5>
+                      <font color="black">
+                      <hr />
+                      <b>Disclaimer</b>: the models are provided "as is", with the hope that they may be of use, without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose and noninfringement. in no event shall the authors or copyright holders be liable for any claim, damages or other liability, whether in an action of contract, tort or otherwise, arising from, out of or in connection with the models or the use or other dealings in the models.  
+                      </font>
+                 </h5></font>
             </div>
         </div>
         <div class="container">
@@ -118,7 +121,7 @@
             </div>
         </div>
 
-        <div class="container">
+<!--         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                   <h2><b>PredictDB Data</b></h2>
@@ -162,14 +165,14 @@
                         </ul>
                 </div>
             </div>
-        </div>
+        </div> -->
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <h2><b>Acknowledgements</b></h2>
                         <h4><i>GTEx</i></h4>
                         <p>
-                            The Genotype-Tissue Expression (GTEx; </a> <a href="https://docs.google.com/spreadsheets/d/1Rs9y05h7Uuk-5xNbFJFbFDc5nNl7BBcKzuLz4L7xqFU/edit#gid=0" target="_blank"> Sample size </a> ) project was supported by <a href="http://commonfund.nih.gov/GTEx/index" target="_blank"> the Common Fund of the Office of the Director of the National Institutes of Health. </a> All GTEx Data was downloaded from <a href="https://www.ncbi.nlm.nih.gov/gap" target="_blank"> The database of Genotypes and Phenotypes (dbGaP).</a>
+                            The Genotype-Tissue Expression (GTEx; </a> <a href="data/sample_size_and_number_of_genes_per_tissue_v7_and_v6p.pdf" target="_blank"> Sample size </a> ) project was supported by <a href="http://commonfund.nih.gov/GTEx/index" target="_blank"> the Common Fund of the Office of the Director of the National Institutes of Health. </a> All GTEx Data was downloaded from <a href="https://www.ncbi.nlm.nih.gov/gap" target="_blank"> The database of Genotypes and Phenotypes (dbGaP).</a>
                         </p>
                         <h4><i>DGN</i></h4>
                         <p>
@@ -198,7 +201,7 @@
                     <h2><b>References</b></h2>
                           <ol>
                             <li id="cite_note-published-articles-1"><a href="http://www.nature.com/ng/journal/v47/n9/full/ng.3367.html">Gamazon ER†, Wheeler HE†, Shah KP†, Mozaffari SV, Aquino-Michaels K, Carroll RJ, Eyler AE, Denny JC, Nicolae DL, Cox NJ, Im HK. (2015) A gene-based association method for mapping traits using reference transcriptome data. Nat Genet. doi:10.1038/ng.3367</a></li>
-                            <li id="cite_note-published-articles-2"><a href="http://biorxiv.org/content/early/2016/03/23/045260">Alvaro Barbeira, Kaanan P Shah, Jason M Torres, Heather E Wheeler, Eric S Torstenson, Todd Edwards, Tzintzuni Garcia, Graeme I Bell, Dan Nicolae, Nancy J Cox, Hae Kyung Im. (2016) MetaXcan: Summary Statistics Based Gene-Level Association Method Infers Accurate PrediXcan Results</a></li>
+                            <li id="cite_note-published-articles-2"><a href="https://www.biorxiv.org/content/early/2017/10/03/045260">Alvaro Barbeira, Scott P Dickinson, Jason M Torres, Eric S Torstenson, Jiamao Zheng, Heather E Wheeler, Kaanan P Shah, Todd Edwards, GTEx Consortium, Dan Nicolae, Nancy J Cox, Hae Kyung Im. (2017) Exploring the phenotypic consequences of tissue specific gene expression variation inferred from GWAS summary statistics.</a></li>
                             <li id="cite_note-published-articles-3"><a href="http://biorxiv.org/content/early/2016/03/15/043653.1">Heather E Wheeler, Kaanan P Shah, Jonathon Brenner, Tzintzuni Garcia, Keston Aquino-Michaels, GTEx Consortium, Nancy J Cox, Dan L Nicolae, Hae Kyung Im. (2016) Survey of the Heritability and Sparsity of Gene Expression Traits Across Human Tissues.</a></li>
                           </ol>
                 </div>

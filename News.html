@@ -38,7 +38,6 @@
           <div class="collapse navbar-collapse btn-group" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li><a href="http://predictdb.org"><strong>Home</strong></a></li>
-                <li><a href="https://cloud.hakyimlab.org"><strong>Cloud</strong></a></li>
                 <li><a href="/News.html"><strong>News</strong></a></li>
                 <li><a href="/FAQ.html"><strong>FAQ</strong></a></li>
                 <li><a href="/Contact.html"><strong>Contact Us</strong></a></li>
@@ -55,62 +54,73 @@
                 <br/>
                     <h1><b>News &amp; Updates</b></h1>
                         <hr />
-                        <h2><strong>November 30th, 2016</strong></h2>
-                        <h3> How can I build my own prediction model? </h3>
-                        <p> We have recieved a number of inquiries from users about how to build their
-own prediction models.  All scripts to train the models are located in the
-GitHub repository <a href="https://github.com/hakyimlab/PredictDBPipeline" target="_blank"> here </a>.  Note
-that many of these scripts have to do with splitting up data and submitting
-jobs to the University of Chicago's HPC cluster.  The script for model training
-is located at <a href="https://github.com/hakyimlab/PredictDBPipeline/blob/master/scripts/GTEx_Tissue_Wide_CV_elasticNet.R" target="_blank"> here </a><br/> 
-                        <br/>
-                        We hope this proves useful and gives some insight into how the models were built. If you do build a prediction model for your own research, we encourage you to share it with the community following the publication of your main results, or sooner, if you feel comfortable.  We can then host your model on predictdb.org while giving you proper acknowledgement.</p>
+                    <h2><strong>January 08, 2018</strong></h2>
+                    <h3> Database release:  GTEx V7 Models available </h3>
+                    <p>                We are releasing prediction models trained on GTEx Version 7 data. Download from <a href="http://predictdb.org">here</a>. We have updated our processing pipeline, and restricted to individuals of European ancestry to obtain more reliable LD data. This reduces false positive associations in the Summary Version of PrediXcan. Because of this choice, the gain in sample size relative to V6p is modest (ranging from -18 to 89), with whole blood, LCLs and fibroblasts experiencing reduced sample size. We developed a new criteria to assess model performance. We have also decided to include prediction models for both pseudogenes and lincRNAs. For your convenience, we also include a SNP annotation file with information on the SNPs used to train the models.
+                    </p>
+                    <p>While preparing GTEx V7 prediction models, we identified a few issues in the way prediction performance was estimated in the previous release (2016-09-08 release). In aggregate, these caused the prediction model performance to be overestimated. Reassuringly, predicted expression levels and the downstream associations with phenotypes remain mostly unchanged, even though prediction weights vary slightly. However, some gene/tissue pairs are no longer considered reliable.</p> 
+                    <p> 
+                        Detailed description of the pipeline update and the effect in prediction models performance and downstream S-PrediXcan association can be found <a href="http://hakyimlab.org/post/2017/v7-v6p-analysis/" target="_blank"> here </a>.
+                    </p>
 
-                        <h2><strong>November 16th, 2016</strong></h2>
-                        <h3> Database update: prediction models using 1KG SNP set </h3>
-                        <p>
-                          Today we are updating the tissue-wide prediction models trained from GTEx data
-                          which use 1000 Genomes SNPs.  There are two main differences: 
-                        </p>
-                        <p>
-                        1. The snp covariance files we had provided previously were built using a
-                        reference dataset with 1000 genomes data.  Now the covariance data is based
-                        off of the GTEx training data.  This should resolve many issues with MetaXcan
-                        not being able to utilize all snps in models.
-                        </p>
-                        <p>
-                        2. In the previous release of our GTEx 1000 Genomes models, we had mistakenly
-                        excluded some well-performing protein-coding gene models before filtering
-                        for statistical significance at the level of FDR < .05. We have now
-                        included these models in the databases. After including these genes though,
-                        some gene-tissue models that had previously just reached the threshold of
-                        statistical significance now no longer meet the necessary criteria.  These
-                        models have been dropped appropriately. As these models were not predicted to
-                        have great performance anyway, we hope that few people, if any, will miss
-                        these models.
-                        </p>
-                        <p>
-                        If you are using the GTEx 1000 Genomes models in your research, we ask you
-                        to rerun your analyses using these updated models.
-                        </p>
-                        <h2><strong>September 8th, 2016</strong></h2>
-                        <h3> Database release: prediction models using HapMap SNP set </h3>
-                        <p>After numerous requests, we have now made our prediction models using HapMap SNPs available. These are models trained on <a href="http://www.gtexportal.org" target="_blank"> GTEx's V6p data</a>, but filtered to include HapMap SNPs only. These may prove beneficial to your analysis if you are working with older data or if you are having to impute much of your genotype data in order to achieve more complete coverage with 1000 Genomes. Detailed descriptions of the databases can be found in the README files.</p>
+                    <p> We would appreciate comments to our mailing list predixcanmetaxcan@googlegroups.com </p>
 
-                        <h2><strong>August 30th, 2016</strong></h2>
-                        <h3> HapMap/GTEx v6p models coming soon </h3>
-                        <p>We are happy to announce the release of new and improved Transcriptome Prediction Models, based off GTEx expression data trained on 1000 Genomes. The models (and associated covariance matrices) can be downloaded from <a href="http://predictdb.org" target="_blank"> PredictDB Data Repository</a>. A more comprehensive explanation of the model changes is available at <a href="https://github.com/hakyimlab/PrediXcan/wiki" target="_blank"> PrediXcan Wiki</a>. <br/> 
-                        <br/>
-                        We will send out an email to the group once these models are made available at <a href="http://predictdb.org" target="_blank"> PredictDB Data Repository</a>, so keep an eye out in the coming days. Cheers!</p>
-                        
-                        <h2><strong>August 18th, 2016</strong></h2>
-                        <h3> Database release: New Transcriptome Models available, MetaXcan software updates </h3>
-                        <p>Since we released our updated prediction models a little over a week ago, we have received numerous requests for models that have been based on HapMap snps only instead of 1000 Genomes.  We are happy to provide these models to you, and they will likely be released in the coming days.  If you have found that you have needed to impute much of your genotype data to achieve more complete coverage of the prediction model, or if you are working with older datasets in general, it may prove beneficial to use these HapMap models instead. <br/> 
-                        <br/>
-                        We have also released a new MetaXcan version that takes advantage of these new models, and has additional output statistics such as the model's prediction performance p-value. Since the new models have a different database schema, updating to the latest MetaXcan version is required. Please note that there is no backward compatibility with the old models. <br/>
-                        <br/>
-                        Thank you all for your involvement with <a href="https://github.com/hakyimlab/PrediXcan" target="_blank"> PrediXcan </a> and <a href="https://github.com/hakyimlab/MetaXcan" target="_blank"> MetaXcan </a>, and your help and feedback. We hope that these new models will prove beneficial to your research. Cheers!
-                        </p>
+                    <h2><strong>November 30th, 2016</strong></h2>
+                    <h3> How can I build my own prediction model? </h3>
+                    <p> We have recieved a number of inquiries from users about how to build their
+                    own prediction models.  All scripts to train the models are located in the
+                    GitHub repository <a href="https://github.com/hakyimlab/PredictDBPipeline" target="_blank"> here </a>.  Note
+                    that many of these scripts have to do with splitting up data and submitting
+                    jobs to the University of Chicago's HPC cluster.  The script for model training
+                    is located at <a href="https://github.com/hakyimlab/PredictDBPipeline/blob/master/scripts/GTEx_Tissue_Wide_CV_elasticNet.R" target="_blank"> here </a><br/> 
+                    <br/>
+                    We hope this proves useful and gives some insight into how the models were built. If you do build a prediction model for your own research, we encourage you to share it with the community following the publication of your main results, or sooner, if you feel comfortable.  We can then host your model on predictdb.org while giving you proper acknowledgement.</p>
+
+                    <h2><strong>November 16th, 2016</strong></h2>
+                    <h3> Database update: prediction models using 1KG SNP set </h3>
+                    <p>
+                      Today we are updating the tissue-wide prediction models trained from GTEx data
+                      which use 1000 Genomes SNPs.  There are two main differences: 
+                    </p>
+                    <p>
+                    1. The snp covariance files we had provided previously were built using a
+                    reference dataset with 1000 genomes data.  Now the covariance data is based
+                    off of the GTEx training data.  This should resolve many issues with MetaXcan
+                    not being able to utilize all snps in models.
+                    </p>
+                    <p>
+                    2. In the previous release of our GTEx 1000 Genomes models, we had mistakenly
+                    excluded some well-performing protein-coding gene models before filtering
+                    for statistical significance at the level of FDR < .05. We have now
+                    included these models in the databases. After including these genes though,
+                    some gene-tissue models that had previously just reached the threshold of
+                    statistical significance now no longer meet the necessary criteria.  These
+                    models have been dropped appropriately. As these models were not predicted to
+                    have great performance anyway, we hope that few people, if any, will miss
+                    these models.
+                    </p>
+                    <p>
+                    If you are using the GTEx 1000 Genomes models in your research, we ask you
+                    to rerun your analyses using these updated models.
+                    </p>
+                    <h2><strong>September 8th, 2016</strong></h2>
+                    <h3> Database release: prediction models using HapMap SNP set </h3>
+                    <p>After numerous requests, we have now made our prediction models using HapMap SNPs available. These are models trained on <a href="http://www.gtexportal.org" target="_blank"> GTEx's V6p data</a>, but filtered to include HapMap SNPs only. These may prove beneficial to your analysis if you are working with older data or if you are having to impute much of your genotype data in order to achieve more complete coverage with 1000 Genomes. Detailed descriptions of the databases can be found in the README files.</p>
+
+                    <h2><strong>August 30th, 2016</strong></h2>
+                    <h3> HapMap/GTEx v6p models coming soon </h3>
+                    <p>We are happy to announce the release of new and improved Transcriptome Prediction Models, based off GTEx expression data trained on 1000 Genomes. The models (and associated covariance matrices) can be downloaded from <a href="http://predictdb.org" target="_blank"> PredictDB Data Repository</a>. A more comprehensive explanation of the model changes is available at <a href="https://github.com/hakyimlab/PrediXcan/wiki" target="_blank"> PrediXcan Wiki</a>. <br/> 
+                    <br/>
+                    We will send out an email to the group once these models are made available at <a href="http://predictdb.org" target="_blank"> PredictDB Data Repository</a>, so keep an eye out in the coming days. Cheers!</p>
+                    
+                    <h2><strong>August 18th, 2016</strong></h2>
+                    <h3> Database release: New Transcriptome Models available, MetaXcan software updates </h3>
+                    <p>Since we released our updated prediction models a little over a week ago, we have received numerous requests for models that have been based on HapMap snps only instead of 1000 Genomes.  We are happy to provide these models to you, and they will likely be released in the coming days.  If you have found that you have needed to impute much of your genotype data to achieve more complete coverage of the prediction model, or if you are working with older datasets in general, it may prove beneficial to use these HapMap models instead. <br/> 
+                    <br/>
+                    We have also released a new MetaXcan version that takes advantage of these new models, and has additional output statistics such as the model's prediction performance p-value. Since the new models have a different database schema, updating to the latest MetaXcan version is required. Please note that there is no backward compatibility with the old models. <br/>
+                    <br/>
+                    Thank you all for your involvement with <a href="https://github.com/hakyimlab/PrediXcan" target="_blank"> PrediXcan </a> and <a href="https://github.com/hakyimlab/MetaXcan" target="_blank"> MetaXcan </a>, and your help and feedback. We hope that these new models will prove beneficial to your research. Cheers!
+                    </p>
                 </div>
             </div>
         </div>
